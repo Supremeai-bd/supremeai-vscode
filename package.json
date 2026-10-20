@@ -4,11 +4,6 @@
   "description": "Developer workflow bridge and live federation runway telemetry for SupremeAI autonomous agents",
   "version": "0.1.0",
   "publisher": "supremeai",
-  "license": "Apache-2.0",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Supremeai-bd/supremeai-vscode.git"
-  },
   "engines": {
     "vscode": "^1.80.0"
   },
@@ -120,11 +115,9 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "test": "tsx src/test/extension.test.ts",
-    "package": "vsce package --no-git-tag-version"
+    "test": "tsx src/test/extension.test.ts"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
