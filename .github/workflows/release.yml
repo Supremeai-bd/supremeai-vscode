@@ -95,7 +95,7 @@ jobs:
 
   build-desktop:
     name: "🖥️ Build Desktop Client (Windows)"
-    if: github.event.inputs.build_clients == 'true'
+    if: github.event.inputs.build_clients == 'true' || github.event_name == 'pull_request'
     needs: package-extension
     runs-on: windows-latest
     timeout-minutes: 25
@@ -126,7 +126,7 @@ jobs:
 
   build-mobile:
     name: "📱 Build Mobile Client (Android)"
-    if: github.event.inputs.build_clients == 'true'
+    if: github.event.inputs.build_clients == 'true' || github.event_name == 'pull_request'
     needs: package-extension
     runs-on: ubuntu-24.04
     timeout-minutes: 20
@@ -156,4 +156,5 @@ jobs:
         with:
           name: apk
           path: mobile/android/app/build/outputs/apk/debug/*.apk
+
 
