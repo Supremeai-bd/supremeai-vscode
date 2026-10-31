@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "private": true,
-  "description": "SupremeAI Unified Client Hub — VS Code Extension, Desktop (Tauri), and Mobile (React + Capacitor)",
+  "description": "SupremeAI Unified Client Hub — VS Code Extension, Desktop (Tauri/Electron), and Mobile (React Native)",
   "workspaces": [
     "extension",
     "desktop",
