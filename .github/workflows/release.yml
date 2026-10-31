@@ -1,6 +1,7 @@
 name: release
 # Unified VS Code Extension & Client Hub Release Pipeline
 on:
+  pull_request:
   push:
     branches: [main]
     paths:
@@ -155,3 +156,4 @@ jobs:
         with:
           name: apk
           path: mobile/android/app/build/outputs/apk/debug/*.apk
+
