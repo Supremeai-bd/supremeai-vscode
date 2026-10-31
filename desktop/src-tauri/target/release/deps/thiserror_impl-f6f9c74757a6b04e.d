@@ -1,0 +1,17 @@
+F:\supremeai-open\vscode\desktop\src-tauri\target\release\deps\thiserror_impl-f6f9c74757a6b04e.d: C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\lib.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\ast.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\attr.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\expand.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\fallback.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\fmt.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\generics.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\prop.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\scan_expr.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\unraw.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\valid.rs
+
+F:\supremeai-open\vscode\desktop\src-tauri\target\release\deps\thiserror_impl-f6f9c74757a6b04e.dll: C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\lib.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\ast.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\attr.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\expand.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\fallback.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\fmt.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\generics.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\prop.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\scan_expr.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\unraw.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\valid.rs
+
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\lib.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\ast.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\attr.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\expand.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\fallback.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\fmt.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\generics.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\prop.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\scan_expr.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\unraw.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\thiserror-impl-2.0.21\src\valid.rs:
+
+# env-dep:CARGO_PKG_VERSION_PATCH=21

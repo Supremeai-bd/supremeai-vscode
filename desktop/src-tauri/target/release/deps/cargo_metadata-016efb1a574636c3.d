@@ -1,0 +1,11 @@
+F:\supremeai-open\vscode\desktop\src-tauri\target\release\deps\cargo_metadata-016efb1a574636c3.d: C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\lib.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\dependency.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\diagnostic.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\errors.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\messages.rs
+
+F:\supremeai-open\vscode\desktop\src-tauri\target\release\deps\libcargo_metadata-016efb1a574636c3.rlib: C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\lib.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\dependency.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\diagnostic.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\errors.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\messages.rs
+
+F:\supremeai-open\vscode\desktop\src-tauri\target\release\deps\libcargo_metadata-016efb1a574636c3.rmeta: C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\lib.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\dependency.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\diagnostic.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\errors.rs C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\messages.rs
+
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\lib.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\dependency.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\diagnostic.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\errors.rs:
+C:\Users\N\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\cargo_metadata-0.19.2\src\messages.rs:

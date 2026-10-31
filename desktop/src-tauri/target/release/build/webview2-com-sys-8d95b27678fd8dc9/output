@@ -1,0 +1,2 @@
+cargo:rustc-link-search=native=F:\supremeai-open\vscode\desktop\src-tauri\target\release\build\webview2-com-sys-8d95b27678fd8dc9\out\x64
+cargo:rustc-link-lib=advapi32
