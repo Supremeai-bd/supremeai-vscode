@@ -232,3 +232,26 @@ button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
 }
+
+
+/* SupremeAI workstation interaction polish: preserve the existing chat-first layout. */
+.workstation { animation: desktop-workspace-arrive 280ms cubic-bezier(.2, .75, .25, 1) both; }
+.workspace-switcher { transition: transform .16s ease, border-color .16s ease, background-color .16s ease; }
+.workspace-switcher:active { transform: scale(.99); }
+.nav-item:not(:disabled):active { transform: translateX(1px) scale(.99); }
+.history-item { transition: transform .15s ease, background-color .15s ease, border-color .15s ease; }
+.history-item:active { transform: scale(.995); }
+.icon-button:active { transform: scale(.95); }
+.command-palette button { transition: transform .15s ease, background-color .15s ease; }
+.command-palette button:active { transform: translateX(2px); }
+.send-button:active:not(:disabled) { transform: translateY(0) scale(.97); }
+.session-badge--connected i { animation: desktop-session-beacon 2.4s ease-in-out infinite; }
+
+@keyframes desktop-workspace-arrive {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes desktop-session-beacon {
+  0%, 100% { opacity: .5; transform: scale(.8); }
+  50% { opacity: 1; transform: scale(1.12); }
+}
