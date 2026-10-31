@@ -7,13 +7,15 @@ export function detectPlatform(): Platform {
   return "web";
 }
 
-export interface SecureStore {
+export interface LocalStore {
   get(key: string): Promise<string | null>;
   set(key: string, value: string): Promise<void>;
   remove(key: string): Promise<void>;
 }
 
-export function createSecureStore(): SecureStore {
+// Preferences and sessionStorage are convenience stores, not encrypted secret vaults.
+// Never put API keys, passwords, or authentication tokens in this store.
+export function createLocalStore(): LocalStore {
   const platform = detectPlatform();
   if (platform === "capacitor") {
     return {
