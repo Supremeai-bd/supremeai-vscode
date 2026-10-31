@@ -1,6 +1,7 @@
 name: release
 # Unified VS Code Extension & Client Hub Release Pipeline
 on:
+  pull_request:
   push:
     branches: [main]
     paths:
@@ -94,7 +95,7 @@ jobs:
 
   build-desktop:
     name: "🖥️ Build Desktop Client (Windows)"
-    if: github.event.inputs.build_clients == 'true'
+    if: github.event.inputs.build_clients == 'true' || github.event_name == 'pull_request'
     needs: package-extension
     runs-on: windows-latest
     timeout-minutes: 25
@@ -103,12 +104,21 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
       - uses: dtolnay/rust-toolchain@stable
       - run: npm ci --workspace=desktop
       - run: npm run build --workspace=desktop
-      - run: New-Item -ItemType Directory -Force -Path desktop/dist | Out-Null; Set-Content -Path desktop/dist/index.html -Value '<!DOCTYPE html><html><body>SupremeAI Desktop</body></html>'
+      - name: Verify desktop frontend bundle
+        shell: pwsh
+        run: |
+          if (!(Test-Path "desktop/dist/index.html")) { throw "Desktop frontend build did not emit desktop/dist/index.html" }
+          $assets = Get-ChildItem "desktop/dist/assets" -Recurse -File -ErrorAction SilentlyContinue
+          if (!$assets) { throw "Desktop frontend build did not emit JS/CSS assets" }
       - run: npx tauri build --config src-tauri/tauri.conf.json --no-bundle
         working-directory: desktop
+        env:
+          RUST_BACKTRACE: "1"
       - uses: actions/upload-artifact@v6
         with:
           name: exe
@@ -116,7 +126,7 @@ jobs:
 
   build-mobile:
     name: "📱 Build Mobile Client (Android)"
-    if: github.event.inputs.build_clients == 'true'
+    if: github.event.inputs.build_clients == 'true' || github.event_name == 'pull_request'
     needs: package-extension
     runs-on: ubuntu-24.04
     timeout-minutes: 20
@@ -125,13 +135,18 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: package-lock.json
       - uses: actions/setup-java@v5
         with:
           distribution: temurin
           java-version: 17
       - run: npm ci --workspace=mobile
       - run: npm run build --workspace=mobile
-      - run: mkdir -p mobile/dist && printf '<!DOCTYPE html><html><body>SupremeAI Mobile</body></html>' > mobile/dist/index.html
+      - name: Verify Android frontend bundle
+        run: |
+          test -s mobile/dist/index.html
+          test -n "$(find mobile/dist/assets -type f \( -name '*.js' -o -name '*.css' \) -print -quit)"
       - run: npx cap add android
         working-directory: mobile
       - run: npx cap sync android
@@ -141,3 +156,5 @@ jobs:
         with:
           name: apk
           path: mobile/android/app/build/outputs/apk/debug/*.apk
+
+
