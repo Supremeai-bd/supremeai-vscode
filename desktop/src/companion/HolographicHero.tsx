@@ -21,12 +21,98 @@ export default function HolographicHero({
   latestReply,
   onSendPrompt,
 }: HolographicHeroProps) {
+  // Interactive Human Gaze Tracking (Head & Eye orientation following cursor)
+  const [gaze, setGaze] = useState({ rotY: 0, rotX: 0, eyeX: 0, eyeY: 0 });
+
+  useEffect(() => {
+    const handleGlobalMouseMove = (e: MouseEvent) => {
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+      const deltaX = (e.clientX - centerX) / centerX; // -1 to 1
+      const deltaY = (e.clientY - centerY) / centerY; // -1 to 1
+
+      // Gentle organic human angles (not stiff mechanical robot snap)
+      const rotY = Math.max(-12, Math.min(12, deltaX * 12));
+      const rotX = Math.max(-8, Math.min(8, -deltaY * 8));
+      const eyeX = Math.max(-4, Math.min(4, deltaX * 4));
+      const eyeY = Math.max(-3, Math.min(3, deltaY * 3));
+
+      setGaze({ rotY, rotX, eyeX, eyeY });
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove);
+    return () => window.removeEventListener('mousemove', handleGlobalMouseMove);
+  }, []);
   // Avatars switchable: cortana (blue neon wireframe) vs iridescent (anime cyber-glow)
   const [activeModel, setActiveModel] = useState<'cortana' | 'iridescent'>('cortana');
+  // Dynamic Animated Scenario: matrix (cyber code rain), aurora (cosmic nebula & stars), or minimal (projector only)
+  const [activeTheme, setActiveTheme] = useState<'matrix' | 'aurora' | 'minimal'>('matrix');
   const [internalState, setInternalState] = useState<CompanionState>(state);
   const [transcript, setTranscript] = useState('');
   const [isListening, setIsListening] = useState(false);
   const recognitionRef = useRef<any>(null);
+  const matrixCanvasRef = useRef<HTMLCanvasElement | null>(null);
+
+  // Digital Matrix Rain Animation Engine
+  useEffect(() => {
+    if (activeTheme !== 'matrix') return;
+    const canvas = matrixCanvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    const resizeCanvas = () => {
+      canvas.width = canvas.parentElement?.clientWidth || window.innerWidth;
+      canvas.height = canvas.parentElement?.clientHeight || window.innerHeight;
+    };
+    resizeCanvas();
+
+    const chars = '0123456789ABCDEFΣΠΩΨΔΞλμθφSUPREMEAI';
+    const fontSize = 13;
+    const columns = Math.floor(canvas.width / fontSize);
+    const drops: number[] = Array.from({ length: columns }, () => Math.floor(Math.random() * -50));
+
+    const drawMatrix = () => {
+      ctx.fillStyle = 'rgba(2, 4, 8, 0.12)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      ctx.font = `${fontSize}px monospace`;
+
+      for (let i = 0; i < drops.length; i++) {
+        const text = chars.charAt(Math.floor(Math.random() * chars.length));
+        const x = i * fontSize;
+        const y = drops[i] * fontSize;
+
+        // Leading bright cyan spark, trailed by neon blue-green
+        if (Math.random() > 0.85) {
+          ctx.fillStyle = '#ffffff';
+          ctx.shadowColor = '#00f0ff';
+          ctx.shadowBlur = 8;
+        } else {
+          ctx.fillStyle = '#00c3ff';
+          ctx.shadowColor = '#0066ff';
+          ctx.shadowBlur = 4;
+        }
+
+        ctx.fillText(text, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+      animationFrameId = requestAnimationFrame(drawMatrix);
+    };
+
+    drawMatrix();
+    window.addEventListener('resize', resizeCanvas);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, [activeTheme]);
 
   // Drag state for floating mode
   const [position, setPosition] = useState({ x: 30, y: window.innerHeight - 480 });
@@ -147,6 +233,18 @@ export default function HolographicHero({
         isDocked ? 'holo-container--floating' : 'holo-container--immersive'
       }`}
     >
+      {/* Background Animated Scenarios (Matrix Rain or Cosmic Aurora Nebula) */}
+      {activeTheme === 'matrix' && (
+        <canvas ref={matrixCanvasRef} className="holo-matrix-canvas" />
+      )}
+
+      {activeTheme === 'aurora' && (
+        <>
+          <div className="holo-nebula-scenery" />
+          <div className="holo-nebula-stars" />
+        </>
+      )}
+
       {/* Background Cyber Floor Projector (visible in 90% full immersive view) */}
       {!isDocked && (
         <>
@@ -168,6 +266,18 @@ export default function HolographicHero({
         </div>
 
         <div style={{ display: 'flex', gap: '6px' }}>
+          {/* Backdrop Scenery Animation Switcher */}
+          <button
+            className="holo-btn-action"
+            onClick={(e) => {
+              e.stopPropagation();
+              setActiveTheme((t) => (t === 'matrix' ? 'aurora' : t === 'aurora' ? 'minimal' : 'matrix'));
+            }}
+            title="Switch Background Animation Scenario (Matrix / Aurora Nebula / Clean)"
+          >
+            {activeTheme === 'matrix' ? '💻 Matrix' : activeTheme === 'aurora' ? '🌌 Nebula' : '🌀 Clean'}
+          </button>
+
           {/* Avatar Switcher */}
           <button
             className="holo-btn-action"
@@ -209,9 +319,30 @@ export default function HolographicHero({
         </div>
       </div>
 
-      {/* Main Holographic Avatar Stage */}
-      <div className={`holo-avatar-wrapper holo-avatar-wrapper--${internalState}`}>
+      {/* Main Holographic Avatar Stage with Human Gaze & Eye/Lip Sync */}
+      <div
+        className={`holo-avatar-wrapper holo-avatar-wrapper--${internalState}`}
+        style={{
+          transform: `perspective(1000px) rotateY(${gaze.rotY}deg) rotateX(${gaze.rotX}deg)`,
+        }}
+      >
         <img src={avatarSrc} alt="Holographic AI Companion" className="holo-avatar-img" />
+
+        {/* Dynamic Human Eye Tracking Overlay */}
+        <div className="holo-eyes-tracker">
+          <div
+            className="holo-eye"
+            style={{ transform: `translate(${gaze.eyeX}px, ${gaze.eyeY}px)` }}
+          />
+          <div
+            className="holo-eye"
+            style={{ transform: `translate(${gaze.eyeX}px, ${gaze.eyeY}px)` }}
+          />
+        </div>
+
+        {/* Dynamic Human Lip-Sync Overlay */}
+        <div className="holo-lips-sync" />
+
         <div className="holo-scanlines" />
       </div>
 
