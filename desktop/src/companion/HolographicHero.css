@@ -81,16 +81,14 @@
   pointer-events: none;
 }
 
-/* The Main Hologram Avatar Wrapper with Human 3D Tracking */
+/* The Main Hologram Avatar Wrapper */
 .holo-avatar-wrapper {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 10;
-  transition: transform 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
-  perspective: 1000px;
-  transform-style: preserve-3d;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .holo-container--immersive .holo-avatar-wrapper {
@@ -103,105 +101,18 @@
   width: 100%;
 }
 
-/* The Hologram Image Canvas: Screen blending to eliminate black backdrop entirely */
+/* The Hologram Image Canvas */
 .holo-avatar-img {
   height: 100%;
   width: auto;
   max-width: 100%;
   object-fit: contain;
-  mix-blend-mode: screen;
-  filter: drop-shadow(0 0 25px rgba(0, 210, 255, 0.75)) contrast(1.25) brightness(1.15);
-  animation: holo-human-breathe 4.5s ease-in-out infinite;
-  mask-image: radial-gradient(circle at 50% 50%, black 70%, transparent 98%);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 70%, transparent 98%);
+  filter: drop-shadow(0 0 25px rgba(0, 210, 255, 0.6)) contrast(1.1) brightness(1.05);
+  animation: holo-float 4s ease-in-out infinite;
+  mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
   pointer-events: none;
   user-select: none;
-  transform-origin: center bottom;
-}
-
-/* Natural Human Eyes Overlay (Living Blink + Eye Motion) */
-.holo-eyes-tracker {
-  position: absolute;
-  top: 19%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 58px;
-  height: 14px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  pointer-events: none;
-  z-index: 15;
-}
-
-.holo-eye {
-  width: 14px;
-  height: 9px;
-  background: radial-gradient(circle at 50% 50%, #ffffff 0%, #00f0ff 65%, transparent 100%);
-  border-radius: 50%;
-  box-shadow: 0 0 12px #00f0ff, 0 0 4px #ffffff;
-  transition: transform 0.12s ease-out;
-  animation: holo-natural-blink 4.2s infinite;
-}
-
-/* Natural Human Lip-Sync Overlay */
-.holo-lips-sync {
-  position: absolute;
-  top: 25.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 22px;
-  height: 6px;
-  border-radius: 4px;
-  background: radial-gradient(ellipse at 50% 50%, rgba(135, 235, 255, 0.85) 0%, rgba(0, 160, 255, 0.3) 70%, transparent 100%);
-  box-shadow: 0 0 8px rgba(0, 220, 255, 0.6);
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: 15;
-  transition: all 0.1s ease;
-}
-
-.holo-avatar-wrapper--speaking .holo-lips-sync {
-  opacity: 0.95;
-  animation: holo-lip-talk 0.28s ease-in-out infinite alternate;
-}
-
-@keyframes holo-natural-blink {
-  0%, 94%, 100% {
-    transform: scaleY(1);
-    opacity: 0.9;
-  }
-  96%, 98% {
-    transform: scaleY(0.08);
-    opacity: 0.2;
-  }
-}
-
-@keyframes holo-lip-talk {
-  0% {
-    transform: translateX(-50%) scaleX(0.85) scaleY(0.6);
-    box-shadow: 0 0 6px rgba(0, 220, 255, 0.4);
-  }
-  50% {
-    transform: translateX(-50%) scaleX(1.15) scaleY(1.8);
-    box-shadow: 0 0 14px rgba(0, 255, 240, 0.9);
-  }
-  100% {
-    transform: translateX(-50%) scaleX(0.95) scaleY(1.1);
-    box-shadow: 0 0 8px rgba(0, 210, 255, 0.6);
-  }
-}
-
-@keyframes holo-human-breathe {
-  0%, 100% {
-    transform: translateY(0px) scale(1);
-  }
-  35% {
-    transform: translateY(-5px) scale(1.012, 1.018);
-  }
-  70% {
-    transform: translateY(-2px) scale(0.995, 0.998);
-  }
 }
 
 /* Active State Overlays (Cyan / Blue Neon Energy) */
@@ -220,60 +131,7 @@
   animation: holo-float 2.5s ease-in-out infinite, holo-speak-wave 0.8s ease-in-out infinite alternate;
 }
 
-/* Matrix Digital Rain Canvas */
-.holo-matrix-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0.45;
-  mix-blend-mode: screen;
-  z-index: 1;
-}
-
-/* Cosmic Nebula / Aurora Natural Scenario */
-.holo-nebula-scenery {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background: 
-    radial-gradient(circle at 20% 30%, rgba(0, 195, 255, 0.22) 0%, transparent 50%),
-    radial-gradient(circle at 80% 40%, rgba(138, 43, 226, 0.25) 0%, transparent 60%),
-    radial-gradient(circle at 50% 80%, rgba(0, 255, 170, 0.18) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(10, 25, 55, 0.6) 0%, transparent 100%);
-  filter: blur(40px);
-  animation: holo-nebula-drift 18s ease-in-out infinite alternate;
-}
-
-.holo-nebula-stars {
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(1.5px 1.5px at 15px 25px, #fff, transparent),
-    radial-gradient(2px 2px at 75px 125px, #7df9ff, transparent),
-    radial-gradient(1px 1px at 145px 85px, #fff, transparent),
-    radial-gradient(1.8px 1.8px at 220px 190px, #b088ff, transparent),
-    radial-gradient(1.5px 1.5px at 310px 45px, #fff, transparent);
-  background-size: 350px 350px;
-  opacity: 0.6;
-  animation: holo-stars-twinkle 6s ease-in-out infinite alternate;
-  pointer-events: none;
-  z-index: 2;
-}
-
-@keyframes holo-nebula-drift {
-  0% { transform: scale(1) rotate(0deg); opacity: 0.6; }
-  50% { transform: scale(1.15) rotate(3deg); opacity: 0.85; }
-  100% { transform: scale(1.05) rotate(-3deg); opacity: 0.7; }
-}
-
-@keyframes holo-stars-twinkle {
-  0% { opacity: 0.35; }
-  50% { opacity: 0.75; }
-  100% { opacity: 0.45; }
-}
+/* Scanline Effect */
 .holo-scanlines {
   position: absolute;
   inset: 0;
